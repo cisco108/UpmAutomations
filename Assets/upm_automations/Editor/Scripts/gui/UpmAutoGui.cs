@@ -3,7 +3,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using ClickEvent = UnityEngine.UIElements.ClickEvent;
-
+ 
+namespace UpmAuto {
 public class UpmAutoGui : EditorWindow
 {
     private TextField GitExe => rootVisualElement.Q<TextField>("git-exe");
@@ -25,13 +26,13 @@ public class UpmAutoGui : EditorWindow
         VisualTreeAsset asset = Resources.Load<VisualTreeAsset>("GitinityUI");
 
         asset.CloneTree(root);
-        
+
         GitExe.SetValueWithoutNotify(Configs.gitBashExe);
         GitExe.RegisterValueChangedCallback(UpdateGitExe);
-        
+
         PackagePath.SetValueWithoutNotify(Configs.packagePath);
         PackagePath.RegisterValueChangedCallback(UpdatePackagePath);
-        
+
         PackageVersion.SetValueWithoutNotify(Configs.version);
         PackageVersion.RegisterValueChangedCallback(evt => Configs.version = evt.newValue);
 
@@ -54,4 +55,5 @@ public class UpmAutoGui : EditorWindow
         OnPublish.Invoke();
     }
 
+}
 }

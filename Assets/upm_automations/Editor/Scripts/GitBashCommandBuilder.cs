@@ -1,49 +1,53 @@
 ﻿using System;
 using UnityEngine;
 
-public class GitBashCommandBuilder 
+namespace UpmAuto
 {
-
-    public string GetCommit(string contentPath)
+    public class GitBashCommandBuilder
     {
-        //TODO: this has to have the version in it 
-        return GitCommands.add + contentPath
-                               + " && " + GitCommands.commit_m
-                               + $" \' new version {Configs.version} \'";
-    }
 
-    public string GetPush(string branchName = default)
-    {
-        if (branchName == default)
+        public string GetCommit(string contentPath)
         {
-            return GitCommands.push_origin;
+            //TODO: this has to have the version in it 
+            return GitCommands.add + contentPath
+                                   + " && " + GitCommands.commit_m
+                                   + $" \' new version {Configs.version} \'";
         }
-        return GitCommands.push_origin + branchName;
-    }
 
-    public string GetPushAllBranches()
-    {
-        return GitCommands.push_origin + GitFlags.all;
-    }
+        public string GetPush(string branchName = default)
+        {
+            if (branchName == default)
+            {
+                return GitCommands.push_origin;
+            }
 
-    public string GetCreateBranch(string branchName)
-    {
-        return GitCommands.branch + branchName;
-    }
+            return GitCommands.push_origin + branchName;
+        }
 
-    public string GetCurrentBranch()
-    {
-        return GitCommands.branch + GitFlags.show_current;
-    }
+        public string GetPushAllBranches()
+        {
+            return GitCommands.push_origin + GitFlags.all;
+        }
 
-    public string GetSwitch(string branch)
-    {
-        return GitCommands.g_switch + branch;
-    }
+        public string GetCreateBranch(string branchName)
+        {
+            return GitCommands.branch + branchName;
+        }
 
-    public string GetSubtreeSplitNewBranch(string prefix, string newBranchName)
-    {
-        return GitCommands.subtree_split_prefix + prefix + GitFlags.branch + newBranchName;
-    }
+        public string GetCurrentBranch()
+        {
+            return GitCommands.branch + GitFlags.show_current;
+        }
 
+        public string GetSwitch(string branch)
+        {
+            return GitCommands.g_switch + branch;
+        }
+
+        public string GetSubtreeSplitNewBranch(string prefix, string newBranchName)
+        {
+            return GitCommands.subtree_split_prefix + prefix + GitFlags.branch + newBranchName;
+        }
+
+    }
 }
