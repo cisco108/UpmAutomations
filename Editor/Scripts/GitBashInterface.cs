@@ -3,39 +3,40 @@ using System.Diagnostics;
 using System.IO;
 using Debug = UnityEngine.Debug;
 
-public class GitBashInterface 
+namespace UpmAuto
 {
-
-    public void Execute(string command)
+    public class GitBashInterface
     {
-        Bash(command);
-    }
-
-
-    private void Bash(string command)
-    {
-        try
+        public void Execute(string command)
         {
-            using Process gitProcess = new Process();
-            gitProcess.StartInfo.FileName = Configs.gitBashExe;
-            gitProcess.StartInfo.WorkingDirectory = Directory.GetCurrentDirectory();
-
-            gitProcess.StartInfo.Arguments = $"-c \"{command}\"";
-
-            Debug.Log(gitProcess.StartInfo.Arguments);
-            gitProcess.StartInfo.UseShellExecute = false;
-            gitProcess.StartInfo.RedirectStandardOutput = true;
-            gitProcess.StartInfo.RedirectStandardError = true;
-            gitProcess.StartInfo.CreateNoWindow = true;
-
-            gitProcess.Start();
-            gitProcess.WaitForExit();
+            Bash(command);
         }
-        catch (Exception e)
+
+
+        private void Bash(string command)
         {
-            Debug.LogError($"Error from bash: {e}");
-            throw;
+            try
+            {
+                using Process gitProcess = new Process();
+                gitProcess.StartInfo.FileName = Configs.gitBashExe;
+                gitProcess.StartInfo.WorkingDirectory = Directory.GetCurrentDirectory();
+
+                gitProcess.StartInfo.Arguments = $"-c \"{command}\"";
+
+                Debug.Log(gitProcess.StartInfo.Arguments);
+                gitProcess.StartInfo.UseShellExecute = false;
+                gitProcess.StartInfo.RedirectStandardOutput = true;
+                gitProcess.StartInfo.RedirectStandardError = true;
+                gitProcess.StartInfo.CreateNoWindow = true;
+
+                gitProcess.Start();
+                gitProcess.WaitForExit();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Error from bash: {e}");
+                throw;
+            }
         }
     }
-    
 }
