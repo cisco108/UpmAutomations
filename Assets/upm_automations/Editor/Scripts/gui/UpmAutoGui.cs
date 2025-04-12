@@ -8,6 +8,7 @@ public class UpmAutoGui : EditorWindow
 {
     private TextField GitExe => rootVisualElement.Q<TextField>("git-exe");
     private TextField PackagePath => rootVisualElement.Q<TextField>("package-path");
+    private TextField PackageVersion => rootVisualElement.Q<TextField>("package-version");
     private Button PublishBtn => rootVisualElement.Q<Button>("publish-btn");
     public static event Action OnPublish;
 
@@ -30,6 +31,9 @@ public class UpmAutoGui : EditorWindow
         
         PackagePath.SetValueWithoutNotify(Configs.packagePath);
         PackagePath.RegisterValueChangedCallback(UpdatePackagePath);
+        
+        PackageVersion.SetValueWithoutNotify(Configs.version);
+        PackageVersion.RegisterValueChangedCallback(evt => Configs.version = evt.newValue);
 
         PublishBtn.RegisterCallback<ClickEvent>(FirePublish);
 
