@@ -35,6 +35,6 @@ public static class Configs
 {
     public static string gitBashExe = @"C:\Program Files\Git\git-bash.exe";
     public static string branchName = "upm";
-    public static string version;
-    public static string packagePath = @"Assets\";
+    public static string version = "0.0.0";
+    public static string packagePath = @"Assets/";
 }

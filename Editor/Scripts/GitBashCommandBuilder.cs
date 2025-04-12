@@ -9,7 +9,7 @@ public class GitBashCommandBuilder
         //TODO: this has to have the version in it 
         return GitCommands.add + contentPath
                                + " && " + GitCommands.commit_m
-                               + $" \' added {contentPath} on {DateTime.Now} \'";
+                               + $" \' new version {Configs.version} \'";
     }
 
     public string GetPush(string branchName = default)
