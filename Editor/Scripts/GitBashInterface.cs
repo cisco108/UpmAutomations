@@ -18,7 +18,7 @@ namespace UpmAuto
             try
             {
                 using Process gitProcess = new Process();
-                gitProcess.StartInfo.FileName = Configs.gitBashExe;
+                gitProcess.StartInfo.FileName = UpmAutoConfigs.gitBashExe;
                 gitProcess.StartInfo.WorkingDirectory = Directory.GetCurrentDirectory();
 
                 gitProcess.StartInfo.Arguments = $"-c \"{command}\"";
