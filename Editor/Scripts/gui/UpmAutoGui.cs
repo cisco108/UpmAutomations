@@ -26,16 +26,28 @@ public class UpmAutoGui : EditorWindow
         asset.CloneTree(root);
         
         GitExe.SetValueWithoutNotify(Configs.gitBashExe);
+        GitExe.RegisterValueChangedCallback(UpdateGitExe);
+        
         PackagePath.SetValueWithoutNotify(Configs.packagePath);
+        PackagePath.RegisterValueChangedCallback(UpdatePackagePath);
 
         PublishBtn.RegisterCallback<ClickEvent>(FirePublish);
 
+    }
+
+    private void UpdatePackagePath(ChangeEvent<string> evt)
+    {
+        Configs.packagePath = evt.newValue;
+    }
+
+    private void UpdateGitExe(ChangeEvent<string> evt)
+    {
+        Configs.gitBashExe = evt.newValue;
     }
 
     private static void FirePublish(ClickEvent _)
     {
         OnPublish.Invoke();
     }
-
 
 }
