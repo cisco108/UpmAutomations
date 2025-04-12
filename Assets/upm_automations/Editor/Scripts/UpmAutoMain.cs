@@ -22,8 +22,8 @@ namespace UpmAuto
             string commitCmd = _commandBuilder.GetCommit(" . ");
             _terminal.Execute(commitCmd);
 
-            string prefix = Configs.packagePath;
-            string branchName = Configs.branchName;
+            string prefix = UpmAutoConfigs.packagePath;
+            string branchName = UpmAutoConfigs.branchName;
             string subtreeSplitCmd = _commandBuilder.GetSubtreeSplitNewBranch(prefix, branchName);
             _terminal.Execute(subtreeSplitCmd);
 
@@ -33,11 +33,5 @@ namespace UpmAuto
 
     }
 
-    public static class Configs
-    {
-        public static string gitBashExe = @"C:\Program Files\Git\git-bash.exe";
-        public static string branchName = "upm";
-        public static string version = "0.0.0";
-        public static string packagePath = @"Assets/";
-    }
+
 }

@@ -11,7 +11,7 @@ namespace UpmAuto
             //TODO: this has to have the version in it 
             return GitCommands.add + contentPath
                                    + " && " + GitCommands.commit_m
-                                   + $" \' new version {Configs.version} \'";
+                                   + $" \' new version {UpmAutoConfigs.version} \'";
         }
 
         public string GetPush(string branchName = default)

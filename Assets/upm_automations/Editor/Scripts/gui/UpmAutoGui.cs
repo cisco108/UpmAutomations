@@ -13,11 +13,11 @@ public class UpmAutoGui : EditorWindow
     private Button PublishBtn => rootVisualElement.Q<Button>("publish-btn");
     public static event Action OnPublish;
 
-    [MenuItem("Tools/Upm Automations")]
+    [MenuItem("Tools/\u23e9 Upm Automations \u23e9")]
     public static void ShowWindow()
     {
         UpmAutoGui wnd = GetWindow<UpmAutoGui>();
-        wnd.titleContent = new GUIContent("🚀Upm Automations🚀");
+        wnd.titleContent = new GUIContent("\u23e9 Upm Automations \u23e9");
     }
 
     public void CreateGUI()
@@ -27,14 +27,14 @@ public class UpmAutoGui : EditorWindow
 
         asset.CloneTree(root);
 
-        GitExe.SetValueWithoutNotify(Configs.gitBashExe);
+        GitExe.SetValueWithoutNotify(UpmAutoConfigs.gitBashExe);
         GitExe.RegisterValueChangedCallback(UpdateGitExe);
 
-        PackagePath.SetValueWithoutNotify(Configs.packagePath);
+        PackagePath.SetValueWithoutNotify(UpmAutoConfigs.packagePath);
         PackagePath.RegisterValueChangedCallback(UpdatePackagePath);
 
-        PackageVersion.SetValueWithoutNotify(Configs.version);
-        PackageVersion.RegisterValueChangedCallback(evt => Configs.version = evt.newValue);
+        PackageVersion.SetValueWithoutNotify(UpmAutoConfigs.version);
+        PackageVersion.RegisterValueChangedCallback(evt => UpmAutoConfigs.version = evt.newValue);
 
         PublishBtn.RegisterCallback<ClickEvent>(FirePublish);
 
@@ -42,12 +42,12 @@ public class UpmAutoGui : EditorWindow
 
     private void UpdatePackagePath(ChangeEvent<string> evt)
     {
-        Configs.packagePath = evt.newValue;
+        UpmAutoConfigs.packagePath = evt.newValue;
     }
 
     private void UpdateGitExe(ChangeEvent<string> evt)
     {
-        Configs.gitBashExe = evt.newValue;
+        UpmAutoConfigs.gitBashExe = evt.newValue;
     }
 
     private static void FirePublish(ClickEvent _)
