@@ -1,6 +1,9 @@
 # Upm Automations 
-![alt text](ui.png)
 
+### Package can be installed from the upm branch
+
+##### Open the gui: Tools -> UpmAutomations
+![alt text](ui.png)
 ### Press "Publish Package" and:
 - all changes get commited
 - specified version is written in commit message
