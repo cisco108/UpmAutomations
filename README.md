@@ -1,6 +1,7 @@
 # Upm Automations 
 
 ### Package can be installed from the upm branch
+### Before following these steps, one has to create all neccessary files, that make up a Unity Package.
 
 ##### Open the gui: Tools -> UpmAutomations
 ![alt text](ui.png)
